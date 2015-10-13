@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        
+        <h1>Editar plan</h1>
+        <form method="post">
+            Codigo: <input type="text" name="codigo" value="<?php echo $plan->getCodigo(); ?>"><br>
+            Nombre: <input type="text" name="nombre" value="<?php echo $plan->getNombre(); ?>"><br>
+            Almacenamiento: <input type="text" name="almacenamBasico" value="<?php echo $plan->getAlmacenamientoBasico(); ?>"><br>
+            Tamaño archivo: <input type="text" name="tamanioArchivo" value="<?php echo $plan->getTamanioArchivo(); ?>"><br>
+            Precio: <input type="text" name="precio" value="<?php echo $plan->getPrecio(); ?>"><br>
+            Disponible: <input type="checkbox" name="disponible" <?php if($plan->getDisponible()){?> checked <?php } ?><br>
+            <input type="submit" value="Modificar" name="editar">
+            <input type="submit" value="Cancelar" name="editar">
+        </form>
+    </body>
+</html>

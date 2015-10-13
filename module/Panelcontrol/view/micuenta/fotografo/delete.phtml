@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Eliminar fotografo</h1>
+        Are you sure you want to delete fotografo <?php echo $fotografo->getNombre(); ?> <?php echo $fotografo->getApellido(); ?>? <br/>
+        <form method="post">
+            
+          <input type="submit" value="Eliminar" name="del">
+            <input type="submit" value="Cancelar" name="del">
+        </form>
+    </body>
+</html>

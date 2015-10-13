@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        
+        <h1>Editar producto</h1>
+        <form method="post">
+            
+            Nombre: <input type="text" name="nombre" value="<?php echo $producto->getNombre(); ?>"><br>
+            Descripcion: <input type="text" name="descripcion" value="<?php echo $producto->getDescripcion(); ?>"><br>
+            Pixel horizontal minimo: <input type="text" name="pixelhorizmin" value="<?php echo $producto->getPixelHorizontalMinimo(); ?>"><br>
+            Pixel vertical minimo: <input type="text" name="pixelvertmin" value="<?php echo $producto->getPixelVerticalMinimo(); ?>"><br>
+            Mm horizontal: <input type="text" name="mmhorizontal" value="<?php echo $producto->getMmHorizontal(); ?>"><br>
+            Mm vertical: <input type="text" name="mmvertical" value="<?php echo $producto->getMmVertical(); ?>"><br>
+            Pixel horizontal recomendado: <input type="text" name="pixelhorizrec" value="<?php echo $producto->getPixelHorizontalRecomendado(); ?>"><br>
+            Pixel vertical recomendado: <input type="text" name="pixelvertrec" value="<?php echo $producto->getPixelVerticalRecomendado(); ?>"><br>
+            Tipo papel: <select name="tipopapel">
+                <?php foreach($tipospapeles as $tipopapel): ?>
+                <?php if ($tipopapel->getId() == $id_papel_asociado){ ?>
+                    <option value="<?php echo $tipopapel->getId(); ?>" selected><?php echo $tipopapel->getNombre(); ?></opcion>
+                <?php } else { ?>
+                    <option value="<?php echo $tipopapel->getId(); ?>"><?php echo $tipopapel->getNombre(); ?></opcion>
+                <?php } ?>
+                  <?php endforeach; ?>
+            </select>
+          <br>
+            Orden: <input type="text" name="orden" value="<?php echo $producto->getOrden(); ?>"><br>
+            Peso: <input type="text" name="peso" value="<?php echo $producto->getPeso(); ?>"><br>
+            Codigo: <input type="text" name="codigo" value="<?php echo $producto->getCodigo(); ?>"><br>
+            Disponible: <input type="checkbox" name="disponible" <?php if($producto->getDisponible()){?> checked <?php } ?><br>
+            <br><input type="submit" value="Modificar" name="editar">
+            <input type="submit" value="Cancelar" name="editar">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        
+        <div class="panel-body">
+                <a href="<?php echo $this->url('plan', array('action'=>'add'));?>">Agregar plan</a>
+                
+                <?php if (isset($planes)) : ?>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Tamaño archivo</th>
+                        <th>Almacenamiento</th>
+                        <th>Disponible</th>
+                    </tr>
+                    </thead>
+                <?php foreach($planes as $plan): ?>
+                    <tbody>
+                    <tr>
+                        <td><?php echo $plan->getCodigo(); ?></td>
+                        <td><?php echo $plan->getNombre(); ?></td>
+                        <td><?php echo $plan->getTamanioArchivo(); ?></td>
+                        <td><?php echo $plan->getAlmacenamientoBasico(); ?></td>
+                        <td><?php if ($plan->getDisponible()){ echo 'Sí'; }
+                            else { echo 'No'; }?></td>
+                        <td>
+                            <a href="<?php echo $this->url('plan', array('action'=>'edit', 'id' => $plan->getId()));?>">Edit</a> |
+                            <a href="<?php echo $this->url('plan', array('action'=>'delete', 'id' => $plan->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                <?php endforeach; ?>
+                </table>
+                <?php endif; ?>
+                
+                <br> <br>  
+                <a href="<?php echo $this->url('plan', array('action'=>'addalmacextra'));?>">Agregar Almacenamiento Adicional</a>
+                <br> <br>
+                
+                <?php if (isset($almacextras)) : ?>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Almacenamiento Extra</th>
+                        <th>Precio</th>
+                    </tr>
+                    </thead>
+                <?php foreach($almacextras as $almacextra): ?>
+                    <tbody>
+                    <tr>
+                        <?php 
+                        
+                        $id_plan_asociado = $almacextra->getPlan()->getId();
+                        $x = 0;
+                        $codigo_plan_asociado = $planes[$x]->getCodigo();
+                        $arrlength = count($planes);
+
+                        while(($x <= $arrlength) && (($planes[$x]->getId()) != $id_plan_asociado)) {
+                            $x++;
+                        }
+                        $codigo_plan_asociado = $planes[$x]->getCodigo();
+
+                        ?>
+                        <td><?php echo $codigo_plan_asociado; ?></td>
+                        <td><?php echo $almacextra->getAlmacenamExtra(); ?></td>
+                        <td><?php echo $almacextra->getPrecio(); ?></td>
+                        <td>
+                            <a href="<?php echo $this->url('plan', array('action'=>'editalmacextra', 'id' => $almacextra->getId()));?>">Edit</a> |
+                            <a href="<?php echo $this->url('plan', array('action'=>'deletealmacextra', 'id' => $almacextra->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                <?php endforeach; ?>
+                </table>
+                <?php endif; ?>
+                
+                
+                <br> <br>  
+                <a href="<?php echo $this->url('plan', array('action'=>'adddescuento'));?>">Agregar Descuento</a>
+                <br> <br>
+                
+                
+                <?php if (isset($descuentos)) : ?>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Meses pagados</th>
+                        <th>Descuento (%)</th>
+                    </tr>
+                    </thead>
+                <?php foreach($descuentos as $descuento): ?>
+                    <tbody>
+                    <tr>
+                        <?php 
+                        
+                        $id_plan_asociado = $descuento->getPlan()->getId();
+                        $x = 0;
+                        $codigo_plan_asociado = $planes[$x]->getCodigo();
+                        $arrlength = count($planes);
+
+                        while(($x <= $arrlength) && (($planes[$x]->getId()) != $id_plan_asociado)) {
+                            $x++;
+                        }
+                        $codigo_plan_asociado = $planes[$x]->getCodigo();
+
+                        ?>
+                        <td><?php echo $codigo_plan_asociado; ?></td>
+                        <td><?php echo $descuento->getMesesPagados(); ?></td>
+                        <td><?php echo $descuento->getPorcentaje(); ?></td>
+                        <td>
+                            <a href="<?php echo $this->url('plan', array('action'=>'editdescuento', 'id' => $descuento->getId()));?>">Edit</a> |
+                            <a href="<?php echo $this->url('plan', array('action'=>'deletedescuento', 'id' => $descuento->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                <?php endforeach; ?>
+                </table>
+                <?php endif; ?>
+        
+        </div>
+
+    </body>
+</html>

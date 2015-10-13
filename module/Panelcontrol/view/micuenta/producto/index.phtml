@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>        
+        <div class="panel-body">
+                <a href="<?php echo $this->url('producto', array('action'=>'add'));?>">Agregar producto</a>
+
+                <?php if (isset($productos)) : ?>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Tipo Papel</th>
+                        <th>Disponible</th>
+                    </tr>
+                    </thead>
+                <?php foreach($productos as $producto): ?>
+                    <tbody>
+                    <tr>
+                        <?php 
+                        
+                        $id_papel_asociado = $producto->getTipoPapel()->getId();
+                        $x = 0;
+                        $nombre_papel_asociado = $tipospapeles[$x]->getNombre();
+                        $arrlength = count($tipospapeles);
+
+                        while(($x <= $arrlength) && (($tipospapeles[$x]->getId()) != $id_papel_asociado)) {
+                            $x++;
+                        }
+                        $nombre_papel_asociado = $tipospapeles[$x]->getNombre();
+                        ?>
+                        <td><?php echo $producto->getNombre(); ?></td>
+                        <td><?php echo $producto->getDescripcion(); ?></td>
+                        <td><?php echo $nombre_papel_asociado; ?></td>
+                        <td><?php if ($producto->getDisponible()){ echo 'Sí'; }
+                            else { echo 'No'; }?></td>
+                        <td>
+                        <td>
+                            <a href="<?php echo $this->url('producto', array('action'=>'edit', 'id' => $producto->getId()));?>">Edit</a> |
+                            <a href="<?php echo $this->url('producto', array('action'=>'delete', 'id' => $producto->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                <?php endforeach; ?>
+                </table>
+                <?php endif; ?>
+            </div>
+    </body>
+</html>

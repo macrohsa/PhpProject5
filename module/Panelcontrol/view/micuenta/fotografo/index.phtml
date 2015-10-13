@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>        
+        <div class="panel-body">
+                <a href="<?php echo $this->url('fotografo', array('action'=>'add'));?>">Agregar fotografo</a>
+
+                <?php if (isset($fotografos)) : ?>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                    </tr>
+                    </thead>
+                <?php foreach($fotografos as $fotografo): ?>
+                    <tbody>
+                    <tr>
+                        <td><?php echo $fotografo->getNombre(); ?></td>
+                        <td><?php echo $fotografo->getApellido(); ?></td>
+                        <td><?php echo $fotografo->getEmail(); ?></td>
+                        <td>
+                            <a href="<?php echo $this->url('fotografo', array('action'=>'edit', 'id' => $fotografo->getId()));?>">Edit</a> |
+                            <a href="<?php echo $this->url('fotografo', array('action'=>'delete', 'id' => $fotografo->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                <?php endforeach; ?>
+                </table>
+                <?php endif; ?>
+            </div>
+    </body>
+</html>

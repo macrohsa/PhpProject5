@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+         <h1>Editar Almacenamiento Extra</h1>
+         <form method="post">
+            Almacenamiento: <input type="text" name="almacenamExtra" value="<?php echo $almacextra->getAlmacenamExtra(); ?>"><br>
+            Precio: <input type="text" name="precio" value="<?php echo $almacextra->getPrecio(); ?>"><br>
+            Plan: <select name="plan">
+                <?php foreach($planes as $plan): ?>
+                <?php if ($plan->getId() == $id_plan_asociado){ ?>
+                    <option value="<?php echo $plan->getId(); ?>" selected><?php echo $plan->getNombre(); ?></opcion>
+                <?php } else { ?>
+                    <option value="<?php echo $plan->getId(); ?>"><?php echo $plan->getNombre(); ?></opcion>
+                <?php } ?>
+                  <?php endforeach; ?>
+            </select>
+          <br>
+         
+         <input type="submit" value="Modificar" name="editar">
+            <input type="submit" value="Cancelar" name="editar">
+        <?php
+        
+        ?>
+    </body>
+</html>
