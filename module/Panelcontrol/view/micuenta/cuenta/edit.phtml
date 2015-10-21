@@ -11,14 +11,27 @@ and open the template in the editor.
     </head>
     <body>
         
-        <h1>Editar usuario</h1>
-        <form method="post">
-            Nombre: <input type="text" name="nombre" value="<?php echo $user->getNombre(); ?>"><br>
-            Apellido: <input type="text" name="apellido" value="<?php echo $user->getApellido(); ?>"><br>
-            Email: <input type="text" name="email" value="<?php echo $user->getEmail(); ?>"><br>
-            Contraseña: <input type="text" name="contrasenia" value="<?php echo $user->getContrasenia(); ?>"><br>
-          
-          <input type="submit" value="Modificar">
-        </form>
+        <div class="container">
+            
+            <section id="seccion">
+                
+                <?php
+                 $title = 'Editar usuario';
+                 $this->headTitle($title);
+                 ?>
+                
+                 <h1><?php echo $this->escapeHtml($title); ?></h1>
+        
+                <form method="post">
+                    Nombre: <input type="text" name="nombre" value="<?php echo $user->getNombre(); ?>"><br>
+                    Apellido: <input type="text" name="apellido" value="<?php echo $user->getApellido(); ?>"><br>
+                    Email: <input type="text" name="email" value="<?php echo $user->getEmail(); ?>"><br>
+                    Contraseña: <input type="text" name="contrasenia" value="<?php echo $user->getContrasenia(); ?>"><br>
+
+                  <input type="submit" value="Modificar">
+                </form>
+        </section>
+        
+        </div>
     </body>  
 </html>

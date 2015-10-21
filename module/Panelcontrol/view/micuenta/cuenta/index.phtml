@@ -6,11 +6,20 @@
         <title></title>
     </head>
     <body>
-        Bienvenido a cuenta/index.phtml  ...
+       
+        <div class="container">
+            
+            <section id="seccion">
+                
+                <?php
+                 $title = 'Mi Cuenta';
+                 $this->headTitle($title);
+                 ?>
+                 <h1><?php echo $this->escapeHtml($title); ?></h1>
+                 <p>
+                     <a href="<?php echo $this->url('user', array('action'=>'add'));?>">Agregar usuario</a>
+                 </p>
         
-        <div class="panel-body">
-                <a href="<?php echo $this->url('user', array('action'=>'add'));?>">Agregar usuario</a>
-
                 <?php if (isset($users)) : ?>
                 <table class="table">
                     <thead>
@@ -35,8 +44,10 @@
                 <?php endforeach; ?>
                 </table>
                 <?php endif; ?>
-            </div>
-   
+            
+           </section>
+
+        </div> <!-- /container -->
         
     </body>
 </html>

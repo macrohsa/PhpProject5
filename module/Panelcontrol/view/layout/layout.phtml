@@ -14,7 +14,8 @@
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
                         ->prependStylesheet($this->basePath('css/style.css'))
                         ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+                        ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+                        ->prependStylesheet($this->basePath('css/misestilos.css')) ?>
 
         <!-- Scripts -->
         <?php echo $this->headScript()
@@ -53,11 +54,32 @@
             </div>
         </nav>
         <div class="container">
+            <aside id="columna">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="<?php echo $this->url('user') ?>"><?php echo $this->translate('Mi Cuenta') ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="<?php echo $this->url('fotografo') ?>"><?php echo $this->translate('Fotografos') ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="<?php echo $this->url('plan') ?>"><?php echo $this->translate('Planes') ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="<?php echo $this->url('producto') ?>"><?php echo $this->translate('Productos') ?></a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+
+            </aside>
+            
+            <section id="seccion">
             <?php echo $this->content; ?>
             <hr>
-            <footer>
+                        <footer>
                 <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
             </footer>
+            </section>
+
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>
     </body>
