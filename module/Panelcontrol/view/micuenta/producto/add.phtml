@@ -7,7 +7,17 @@
     </head>
     <body>
        
-        <h1>Agregar producto</h1>
+        <div class="container">
+            
+            <section id="seccion">
+                
+                <?php
+                 $title = 'Agregar producto';
+                 $this->headTitle($title);
+                 ?>
+                
+                 <h1><?php echo $this->escapeHtml($title); ?></h1>
+                 <br>
         <form method="post">
             
             Nombre: <input type="text" name="nombre"><br>
@@ -30,5 +40,8 @@
             <input type="submit" value="Agregar" name="agregar">
             <input type="submit" value="Cancelar" name="agregar">
         </form>
+        </section>
+
+        </div> <!-- /container -->
     </body>
 </html>

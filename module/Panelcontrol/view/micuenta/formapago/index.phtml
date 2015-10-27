@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>        
+        <div class="container">
+            
+            <section id="seccion">
+                
+                <?php
+                 $title = 'Formas Pago';
+                 $this->headTitle($title);
+                 ?>
+                 <h1><?php echo $this->escapeHtml($title); ?></h1>
+                 <p>
+                     <a href="<?php echo $this->url('formapago', array('action'=>'add'));?>">Agregar forma pago</a>
+                 </p>
+                
+
+                <?php if (isset($formaspago)) : ?>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Disponible</th>
+                    </tr>
+                    </thead>
+                <?php foreach($formaspago as $formapago): ?>
+                    <tbody>
+                    <tr>
+                        <td><?php echo $formapago->getCodigo(); ?></td>
+                        <td><?php echo $formapago->getNombre(); ?></td>
+                        <td><?php echo $formapago->getDescripcion(); ?></td>
+                        <td><?php if ($formapago->getDisponible()){ echo 'Sí'; }
+                            else { echo 'No'; }?></td>
+                        <td>
+                        <td>
+                            <a href="<?php echo $this->url('formapago', array('action'=>'edit', 'id' => $formapago->getId()));?>">Edit</a> |
+                            <a href="<?php echo $this->url('formapago', array('action'=>'delete', 'id' => $formapago->getId()));?>">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                <?php endforeach; ?>
+                </table>
+                <?php endif; ?>
+            </section>
+
+        </div> <!-- /container -->
+    </body>
+</html>

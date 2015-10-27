@@ -10,21 +10,26 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
+        
         <div class="container">
             
             <section id="seccion">
                 
                 <?php
-                 $title = 'Eliminar producto';
+                 $title = 'Editar forma pago';
                  $this->headTitle($title);
                  ?>
                 
                  <h1><?php echo $this->escapeHtml($title); ?></h1>
-        Are you sure you want to delete producto <?php echo $producto->getNombre(); ?>? <br/>
         <form method="post">
-            <br> <br>
-            <input type="submit" value="Eliminar" name="del">
-            <input type="submit" value="Cancelar" name="del">
+            
+            Codigo: <input type="text" name="codigo" value="<?php echo $formapago->getCodigo(); ?>"><br>
+            Nombre: <input type="text" name="nombre" value="<?php echo $formapago->getNombre(); ?>"><br>
+            Descripcion: <input type="text" name="descripcion" value="<?php echo $formapago->getDescripcion(); ?>"><br>
+            
+            Disponible: <input type="checkbox" name="disponible" <?php if($formapago->getDisponible()){?> checked <?php } ?><br>
+            <br><input type="submit" value="Modificar" name="editar">
+            <input type="submit" value="Cancelar" name="editar">
         </form>
         </section>
 

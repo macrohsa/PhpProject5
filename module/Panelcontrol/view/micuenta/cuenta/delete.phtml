@@ -24,11 +24,12 @@ and open the template in the editor.
 
                 Are you sure you want to delete user <?php echo $user->getNombre(); ?> <?php echo $user->getApellido(); ?>? <br/>
                 <form method="post">
-                    <input type="submit" value="Eliminar">
+                    <input type="submit" value="Eliminar" name="del">
+            <input type="submit" value="Cancelar" name="del">
                 </form>
                 
             </section>
         
-        </div>
+        </div> <!-- /container -->
     </body>
 </html>

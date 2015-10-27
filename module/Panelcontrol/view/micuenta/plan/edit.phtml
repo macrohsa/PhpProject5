@@ -11,7 +11,16 @@ and open the template in the editor.
     </head>
     <body>
         
-        <h1>Editar plan</h1>
+        <div class="container">
+            
+            <section id="seccion">
+                
+                <?php
+                 $title = 'Editar plan';
+                 $this->headTitle($title);
+                 ?>
+                
+                 <h1><?php echo $this->escapeHtml($title); ?></h1>
         <form method="post">
             Codigo: <input type="text" name="codigo" value="<?php echo $plan->getCodigo(); ?>"><br>
             Nombre: <input type="text" name="nombre" value="<?php echo $plan->getNombre(); ?>"><br>
@@ -22,5 +31,8 @@ and open the template in the editor.
             <input type="submit" value="Modificar" name="editar">
             <input type="submit" value="Cancelar" name="editar">
         </form>
+        </section>
+        
+        </div> <!-- /container -->
     </body>
 </html>

@@ -11,7 +11,16 @@ and open the template in the editor.
     </head>
     <body>
         
-        <h1>Editar producto</h1>
+        <div class="container">
+            
+            <section id="seccion">
+                
+                <?php
+                 $title = 'Editar producto';
+                 $this->headTitle($title);
+                 ?>
+                
+                 <h1><?php echo $this->escapeHtml($title); ?></h1>
         <form method="post">
             
             Nombre: <input type="text" name="nombre" value="<?php echo $producto->getNombre(); ?>"><br>
@@ -39,5 +48,8 @@ and open the template in the editor.
             <br><input type="submit" value="Modificar" name="editar">
             <input type="submit" value="Cancelar" name="editar">
         </form>
+        </section>
+
+        </div> <!-- /container -->
     </body>
 </html>

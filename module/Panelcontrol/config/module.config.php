@@ -58,6 +58,20 @@ return array(
                     ),
                 ),
             ),
+            'formapago' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/formapago[/][:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Micuenta\Controller\Formapago',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
             'fotografo' => array(
                 'type'    => 'segment',
                 'options' => array(
@@ -113,6 +127,7 @@ return array(
             'Micuenta\Controller\Plan' => 'Micuenta\Controller\PlanController',
             'Micuenta\Controller\Fotografo' => 'Micuenta\Controller\FotografoController',
             'Micuenta\Controller\Producto' => 'Micuenta\Controller\ProductoController',
+            'Micuenta\Controller\Formapago' => 'Micuenta\Controller\FormapagoController',
             'Panelcontrol\Controller\Index' => 'Panelcontrol\Controller\IndexController'
         ),
     ),
@@ -123,7 +138,7 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+            'layout/layout'           => __DIR__ . '/../view/layout/layout_1.phtml',
             'panelcontrol/index/index' => __DIR__ . '/../view/panelcontrol/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',

@@ -18,16 +18,13 @@
                  <h1><?php echo $this->escapeHtml($title); ?></h1>
 
         
-                 <form name="form1" method="post">
-                     <input type="hidden" name="sa" value="0">
-                    <a href="<?php echo $this->url('user') ?>">Admin</a>
-                   
+                <form method="post">
+                    <input type="hidden" name="tipousuario" value="1">
+                    Email: <input type="text" name="email" value=""><br>
+                    Contraseña: <input type="text" name="contrasenia" value=""><br>
 
+                    <input type="submit" value="Ingresar" name="ingresar">
                 </form>
-                 <form name="form2" method="post">
-                     <input type="hidden" name="sa" value="1">
-                      <a href="<?php echo $this->url('user') ?>">Fotografo</a>
-                 </form>
             
            </section>
 

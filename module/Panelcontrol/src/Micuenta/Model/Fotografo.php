@@ -58,6 +58,14 @@ class Fotografo{
      * @ORM\JoinColumn(name="id_ciudad", referencedColumnName="id")
      */
     protected $ciudad;
+    
+    
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="FormaPago", inversedBy="fotografos")
+     * @ORM\JoinColumn(name="id_formapago", referencedColumnName="id")
+     */
+    protected $formapago;
 
     
 
@@ -305,5 +313,28 @@ class Fotografo{
     public function getCiudad()
     {
         return $this->ciudad;
+    }
+
+    /**
+     * Set formapago
+     *
+     * @param \Micuenta\Model\FormaPago $formapago
+     * @return Fotografo
+     */
+    public function setFormapago(\Micuenta\Model\FormaPago $formapago = null)
+    {
+        $this->formapago = $formapago;
+
+        return $this;
+    }
+
+    /**
+     * Get formapago
+     *
+     * @return \Micuenta\Model\FormaPago 
+     */
+    public function getFormapago()
+    {
+        return $this->formapago;
     }
 }

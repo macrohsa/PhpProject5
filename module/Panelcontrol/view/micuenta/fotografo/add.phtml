@@ -56,45 +56,57 @@
         </script>
     </head>
     <body>
-        <h1>Agregar fotógrafo</h1>
-        <form id="form1" method="post">
-            <input type="hidden" name="something" id="something">
-          Nombre: <input type="text" name="nombre"><br>
-          Apellido: <input type="text" name="apellido"><br>
-          Email: <input type="text" name="email"><br>
-          Contraseña: <input type="text" name="contrasenia"><br>
-          Email alternativo: <input type="text" name="emailAlternativo"><br>
-          Direccion: <input type="text" name="direccion"><br>
-          Telefono: <input type="text" name="telefono"><br>
+        <div class="container">
+            
+            <section id="seccion">
+                
+                <?php
+                 $title = 'Agregar fotógrafo';
+                 $this->headTitle($title);
+                 ?>
+                <h1><?php echo $this->escapeHtml($title); ?></h1>
+                
+                <form id="form1" method="post">
+                    <input type="hidden" name="something" id="something">
+                    Nombre: <input type="text" name="nombre"><br>
+                    Apellido: <input type="text" name="apellido"><br>
+                    Email: <input type="text" name="email"><br>
+                    Contraseña: <input type="text" name="contrasenia"><br>
+                    Email alternativo: <input type="text" name="emailAlternativo"><br>
+                    Direccion: <input type="text" name="direccion"><br>
+                    Telefono: <input type="text" name="telefono"><br>
+
+                    Pais: <select name="pais" id="pais">
+                            <option value="0">Selecciona Uno...</option>
+                            <?php foreach($paises as $pais): ?>
+                            <option value="<?php echo $pais->getId(); ?>"><?php echo $pais->getNombre(); ?></opcion>
+                            <?php endforeach; ?>
+                        </select>
+                    <br>
+                    Provincia: <select id="estado" name="estado">
+                          <option value="0">Selecciona Uno...</option>
+                      </select>
+                        <br>
+
+                    Ciudad: <select name="ciudad" id="ciudad">
+                        <option value="0">Selecciona Uno...</option>
+                        </select>
+                    <br>
+
+                    Plan: <select name="plan">
+                        <?php foreach($planes as $plan): ?>
+                        <option value="<?php echo $plan->getId(); ?>"><?php echo $plan->getNombre(); ?></opcion>
+                            <?php endforeach; ?>
+                        </select>
+                    <br>
           
-          Pais: <select name="pais" id="pais">
-              <option value="0">Selecciona Uno...</option>
-              <?php foreach($paises as $pais): ?>
-              <option value="<?php echo $pais->getId(); ?>"><?php echo $pais->getNombre(); ?></opcion>
-                  <?php endforeach; ?>
-              </select>
-          <br>
-          Provincia: <select id="estado" name="estado">
-                <option value="0">Selecciona Uno...</option>
-            </select>
-              <br>
-          
-          Ciudad: <select name="ciudad" id="ciudad">
-              <option value="0">Selecciona Uno...</option>
-              </select>
-          <br>
-          
-          Plan: <select name="plan">
-              <?php foreach($planes as $plan): ?>
-              <option value="<?php echo $plan->getId(); ?>"><?php echo $plan->getNombre(); ?></opcion>
-                  <?php endforeach; ?>
-              </select>
-          <br>
-          
-          Activo: <input type="checkbox" name="activo" ><br> 
-          <br>
-          <input type="submit" value="Agregar" name="agregar">
-            <input type="submit" value="Cancelar" name="agregar">
-        </form>
+                    Activo: <input type="checkbox" name="activo" ><br> 
+                    <br>
+                    <input type="submit" value="Agregar" name="agregar">
+                      <input type="submit" value="Cancelar" name="agregar">
+                    </form>
+             </section>
+
+        </div> <!-- /container -->
     </body>
 </html>

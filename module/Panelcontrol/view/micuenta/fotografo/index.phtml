@@ -5,9 +5,21 @@
         <meta charset="UTF-8">
         <title></title>
     </head>
-    <body>        
-        <div class="panel-body">
+    <body>   
+        <div class="container">
+            
+            <section id="seccion">
+                
+                <?php
+                 $title = 'Fotografos';
+                 $this->headTitle($title);
+                 ?>
+                 <h1><?php echo $this->escapeHtml($title); ?></h1>
+                 
+            <p>
                 <a href="<?php echo $this->url('fotografo', array('action'=>'add'));?>">Agregar fotografo</a>
+            </p>
+                
 
                 <?php if (isset($fotografos)) : ?>
                 <table class="table">
@@ -33,6 +45,8 @@
                 <?php endforeach; ?>
                 </table>
                 <?php endif; ?>
-            </div>
+            </section>
+
+        </div> <!-- /container -->
     </body>
 </html>

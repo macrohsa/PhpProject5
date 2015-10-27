@@ -6,7 +6,16 @@
         <title></title>
     </head>
     <body>
-         <h1>Editar Descuento</h1>
+         <div class="container">
+            
+            <section id="seccion">
+                
+                <?php
+                 $title = 'Editar descuento';
+                 $this->headTitle($title);
+                 ?>
+                
+                 <h1><?php echo $this->escapeHtml($title); ?></h1>
          <form method="post">
             Meses pagados: <input type="text" name="meses" value="<?php echo $descuento->getMesesPagados(); ?>"><br>
             Porcentaje: <input type="text" name="porcentaje" value="<?php echo $descuento->getPorcentaje(); ?>"><br>
@@ -23,8 +32,9 @@
          
          <input type="submit" value="Modificar" name="editar">
             <input type="submit" value="Cancelar" name="editar">
-        <?php
+         </form>
+         </section>
         
-        ?>
+        </div> <!-- /container -->
     </body>
 </html>

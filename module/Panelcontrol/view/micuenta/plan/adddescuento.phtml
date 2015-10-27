@@ -10,21 +10,31 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-         <h1>Agregar Descuento</h1>
-         <form method="post">
-            Meses pagados: <input type="text" name="meses"><br>
-            Porcentaje: <input type="text" name="porcentaje"><br>
-            Plan: <select name="plan">
-                <?php foreach($planes as $plan): ?>
-                <option value="<?php echo $plan->getId(); ?>"><?php echo $plan->getNombre(); ?></opcion>
-                  <?php endforeach; ?>
-            </select>
-          <br>
-          <input type="submit" value="Agregar" name="agregar">
-            <input type="submit" value="Cancelar" name="agregar">
-        </form>
-        <?php
+        <div class="container">
+            
+            <section id="seccion">
+                
+                <?php
+                 $title = 'Agregar descuento';
+                 $this->headTitle($title);
+                 ?>
+                
+                 <h1><?php echo $this->escapeHtml($title); ?></h1>
+                 <br>
+                 <form method="post">
+                    Meses pagados: <input type="text" name="meses"><br>
+                    Porcentaje: <input type="text" name="porcentaje"><br>
+                    Plan: <select name="plan">
+                        <?php foreach($planes as $plan): ?>
+                        <option value="<?php echo $plan->getId(); ?>"><?php echo $plan->getNombre(); ?></opcion>
+                          <?php endforeach; ?>
+                    </select>
+                  <br><br>
+                  <input type="submit" value="Agregar" name="agregar">
+                    <input type="submit" value="Cancelar" name="agregar">
+                </form>
+            </section>
         
-        ?>
+        </div> <!-- /container -->
     </body>
 </html>
