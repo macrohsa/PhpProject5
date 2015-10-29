@@ -30,6 +30,20 @@ return array(
                     ),
                 ),
             ),
+            'login' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/login[/][:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Micuenta\Controller\Cuenta',
+                        'action'     => 'login',
+                    ),
+                ),
+            ),
             'plan' => array(
                 'type'    => 'segment',
                 'options' => array(
@@ -138,7 +152,8 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout_1.phtml',
+            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
+            'layout/cuenta'           => __DIR__ . '/../view/layout/layout_cuenta.phtml',
             'panelcontrol/index/index' => __DIR__ . '/../view/panelcontrol/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',

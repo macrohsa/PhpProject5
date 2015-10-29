@@ -17,57 +17,22 @@ class CuentaController extends AbstractActionController
     
     public function indexAction()
     {
-            $users = $this->getObjectManager()->getRepository('\Micuenta\Model\Usuario')->findAll();
-            
-            $request = $this->getRequest();
         
-        if ($request->isPost()) {
-            
-            $email_ingresado = $this->getRequest()->getPost('email');
-            
-            $contrasenia_ingresada = $this->getRequest()->getPost('contrasenia');
-            $email_valido = false;
-            $contrasenia_valida = false;
-            $i = 0;
-            $j = 0;
+         $this->layout()->setTemplate('layout/cuenta');
 
-            while ($i < count($users)){
-                if ($users[$i]->getEmail() == $email_ingresado){
-                    $j = $i;
-                    $this->setCodigo($j);
-                    $id = $users[$i]->getId();
-                    $email_valido = true;
-                    break;    
-                    } 
-                $i++;
-            }
-            
-            if ($email_valido){
-                if ($users[$j]->getContrasenia() == $contrasenia_ingresada){
-                    
-                    return $this->redirect()->toRoute('user', array('action'=>'cuenta'),
-                            array('query' => array('id' => $id),
-                           ));
-                    
-                }
-            }
-            
-            
-
-        }
-
-            return new ViewModel(array('users' => $users));
-        
+            return new ViewModel();
     }
     
     
     public function loginAction()
     {
-        $users = $this->getObjectManager()->getRepository('\Micuenta\Model\Usuario')->findAll();
-            
+        
+        $tipousuario = $this->params('tipousuario');
             $request = $this->getRequest();
         
         if ($request->isPost()) {
+            
+            
             
             $email_ingresado = $this->getRequest()->getPost('email');
             
@@ -76,11 +41,17 @@ class CuentaController extends AbstractActionController
             $contrasenia_valida = false;
             $i = 0;
             $j = 0;
+            
+            if ($tipousuario == 0){
+                $users = $this->getObjectManager()->getRepository('\Micuenta\Model\Usuario')->findAll();
+            }  else {
+                $users = $this->getObjectManager()->getRepository('\Micuenta\Model\Fotografo')->findAll();
+            }
 
             while ($i < count($users)){
                 if ($users[$i]->getEmail() == $email_ingresado){
                     $j = $i;
-                    $this->setCodigo($j);
+//                    $this->setCodigo($j);
                     $id = $users[$i]->getId();
                     $email_valido = true;
                     break;    
@@ -94,15 +65,16 @@ class CuentaController extends AbstractActionController
                     return $this->redirect()->toRoute('user', array('action'=>'cuenta'),
                             array('query' => array('id' => $id),
                            ));
-                    
                 }
             }
             
-            
+            return $this->redirect()->toRoute('login');
 
         }
+        
+        $this->layout()->setTemplate('layout/cuenta');
 
-            return new ViewModel(array('users' => $users));
+            return new ViewModel();
         
         
     }
