@@ -18,18 +18,24 @@
                  $this->headTitle($title);
                  ?>
                  <h1><?php echo $this->escapeHtml($title); ?></h1>
+                 <br><br>
 
         
                  <form name="form1" method="post">
                      
-                     <?php $tipousuario = 0; ?>
-                    <a href="<?php echo $this->url('login', array('action' => 'login', 'tipousuario' => 0)); ?>">Admin</a>
+                     <?php $tipo0 = 0; ?>
+                     <?php $tipo1 = 1; ?>
+                    <a href="<?php echo $this->url('login', array('action' => 'login'),
+                            array('query' => array('tipousuario' => $tipo0),
+                           )); ?>">Admin</a>
                    
 
            
                  <br><br><br>
                
-                      <a href="<?php echo $this->url('login', array('action' => 'login', 'tipousuario' => 1)) ?>">Fotografo</a>
+                      <a href="<?php echo $this->url('login', array('action' => 'login'),
+                            array('query' => array('tipousuario' => $tipo1),
+                           )); ?>">Fotografo</a>
                  </form>
             
            </section>

@@ -28,6 +28,9 @@ class Fotografo{
     /** @ORM\Column(type="string") */
     protected $apellido;
     
+    /** @ORM\Column(type="string") */
+    protected $empresa;
+    
 
     /** @ORM\Column(type="string") */
     protected $emailAlternativo;
@@ -336,5 +339,28 @@ class Fotografo{
     public function getFormapago()
     {
         return $this->formapago;
+    }
+
+    /**
+     * Set empresa
+     *
+     * @param string $empresa
+     * @return Fotografo
+     */
+    public function setEmpresa($empresa)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
+    /**
+     * Get empresa
+     *
+     * @return string 
+     */
+    public function getEmpresa()
+    {
+        return $this->empresa;
     }
 }

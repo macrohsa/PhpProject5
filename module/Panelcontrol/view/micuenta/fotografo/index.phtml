@@ -27,6 +27,7 @@
                     <tr>
                         <th>Nombre</th>
                         <th>Apellido</th>
+                        <th>Empresa</th>
                         <th>Email</th>
                     </tr>
                     </thead>
@@ -35,6 +36,7 @@
                     <tr>
                         <td><?php echo $fotografo->getNombre(); ?></td>
                         <td><?php echo $fotografo->getApellido(); ?></td>
+                        <td><?php echo $fotografo->getEmpresa(); ?></td>
                         <td><?php echo $fotografo->getEmail(); ?></td>
                         <td>
                             <a href="<?php echo $this->url('fotografo', array('action'=>'edit', 'id' => $fotografo->getId()));?>">Edit</a> |

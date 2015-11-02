@@ -57,7 +57,7 @@
     </head>
     <body>
         
-        <h1>Editar fotografo</h1>
+        <h1>Datos registracion</h1>
         <form id="form1" method="post">
             Nombre: <input type="text" name="nombre" value="<?php echo $fotografo->getNombre(); ?>"><br>
             Apellido: <input type="text" name="apellido" value="<?php echo $fotografo->getApellido(); ?>"><br>
@@ -102,19 +102,10 @@
               </select>
           <br>
           
-            Plan: <select name="plan">
-                  <?php foreach($planes as $plan): ?>
-                  <?php if ($plan->getId() == $id_plan_asociado){ ?>
-                      <option value="<?php echo $plan->getId(); ?>" selected><?php echo $plan->getNombre(); ?></opcion>
-                  <?php } else { ?>
-                      <option value="<?php echo $plan->getId(); ?>"><?php echo $plan->getNombre(); ?></opcion>
-                  <?php } ?>
-                    <?php endforeach; ?>
-              </select>
             <br>
           
           <input type="submit" value="Modificar" name="editar">
-            <input type="submit" value="Cancelar" name="editar">
+
         </form>
     </body>
 </html>

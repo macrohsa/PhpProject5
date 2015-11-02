@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
+        
+        <style>
+        table, th, td {
+            /*border: 1px solid black;*/
+            border-collapse: collapse;
+        }
+        th, td {
+            /*padding-bottom: 5px;*/
+            padding-top: 5px;
+            padding-left: 40px;
+        }
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            
+            <section id="seccion">
+                <form id="form1" method="post">
+        
+        <?php foreach($ciudades as $ciudad): 
+            if ($ciudad->getId() == $id_ciudad_asociada){ 
+                $ciudad_fotog = $ciudad->getNombre(); 
+                }  
+                endforeach; ?>
+        
+          <br>
+           <?php foreach($provincias as $provincia): 
+            if ($provincia->getId() == $id_provincia_asociada){ 
+                $provincia_fotog = $provincia->getNombre(); 
+                }  
+                endforeach; ?>
+        
+          <br>
+        <?php foreach($paises as $pais): 
+            if ($pais->getId() == $id_pais_asociado){ 
+                $pais_fotog = $pais->getNombre(); 
+                }  
+                endforeach; ?>
+        
+        <table style="width:80%" >
+            <tr>
+                <td><input type="checkbox" name="empresa" <?php if($arraydatos[1]){?> checked <?php } ?>></td>
+                <td>Nombre Empresa:</td>
+                <td><?php echo $fotografo->getEmpresa(); ?></td>
+              </tr>
+         
+              <tr>
+                  <td><input type="checkbox" name="nombre" <?php if($arraydatos[2]){?> checked <?php } ?>></td>
+                  <td>Nombre y Apellido:</td>
+                <td><?php echo $fotografo->getNombre().' '; ?><?php echo $fotografo->getApellido(); ?></td>
+              </tr>
+              <tr>
+                  <td><input type="checkbox" name="direccion" <?php if($arraydatos[3]){?> checked <?php } ?>></td>
+                  <td>Direccion:</td>
+                <td><?php echo $fotografo->getDireccion(); ?></td>
+              </tr>
+              <tr>
+                  <td><input type="checkbox" name="ciudad" <?php if($arraydatos[4]){?> checked <?php } ?>></td>
+                  <td>Ciudad:</td>
+                <td><?php echo $ciudad_fotog; ?></td>
+              </tr>
+              <tr>
+                  <td><input type="checkbox" name="provincia" <?php if($arraydatos[5]){?> checked <?php } ?>></td>
+                  <td>Provincia:</td>
+                <td><?php echo $provincia_fotog; ?></td>
+              </tr>
+              <tr>
+                  <td><input type="checkbox" name="pais" <?php if($arraydatos[6]){?> checked <?php } ?>></td>
+                  <td>Pais:</td>
+                <td><?php echo $pais_fotog; ?></td>
+              </tr>
+
+              <tr>
+                  <td><input type="checkbox" name="email" <?php if($arraydatos[7]){?> checked <?php } ?>></td>
+                  <td>Email:</td>
+                <td><?php echo $fotografo->getEmail(); ?></td>
+              </tr>
+              <tr>
+                  <td><input type="checkbox" name="telefono" <?php if($arraydatos[8]){?> checked <?php } ?>></td>
+                  <td>Telefono:</td>
+                <td><?php echo $fotografo->getTelefono(); ?></td>
+              </tr>
+
+        </table>
+           <br>
+                    <input type="submit" value="Modificar" name="editar">
+                </form>
+            </section>
+
+        </div> <!-- /container -->
+    </body>
+</html>

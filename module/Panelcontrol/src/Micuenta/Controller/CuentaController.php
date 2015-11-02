@@ -26,13 +26,12 @@ class CuentaController extends AbstractActionController
     
     public function loginAction()
     {
-        
-        $tipousuario = $this->params('tipousuario');
+
+        $tipousuario = $this->params()->fromQuery('tipousuario');
+
             $request = $this->getRequest();
         
         if ($request->isPost()) {
-            
-            
             
             $email_ingresado = $this->getRequest()->getPost('email');
             
@@ -51,7 +50,6 @@ class CuentaController extends AbstractActionController
             while ($i < count($users)){
                 if ($users[$i]->getEmail() == $email_ingresado){
                     $j = $i;
-//                    $this->setCodigo($j);
                     $id = $users[$i]->getId();
                     $email_valido = true;
                     break;    
@@ -63,20 +61,17 @@ class CuentaController extends AbstractActionController
                 if ($users[$j]->getContrasenia() == $contrasenia_ingresada){
                     
                     return $this->redirect()->toRoute('user', array('action'=>'cuenta'),
-                            array('query' => array('id' => $id),
+                            array('query' => array('id' => $id, 'tipousuario' => $tipousuario),
                            ));
                 }
             }
             
             return $this->redirect()->toRoute('login');
-
         }
         
         $this->layout()->setTemplate('layout/cuenta');
 
             return new ViewModel();
-        
-        
     }
 
 
@@ -84,12 +79,17 @@ class CuentaController extends AbstractActionController
     public function cuentaAction()
     {
         $ii = $this->params()->fromQuery('id');
-
-        $usuario1 = $this->getObjectManager()->find('\Micuenta\Model\Usuario', $ii);
-
+        $tipousuario = $this->params()->fromQuery('tipousuario');
         
+        if ($tipousuario == 0){
+            $usuario1 = $this->getObjectManager()->find('\Micuenta\Model\Usuario', $ii);
+        }  else {
+            $usuario1 = $this->getObjectManager()->find('\Micuenta\Model\Fotografo', $ii);
+            $this->layout()->setTemplate('layout/fotografo');
+            $this->layout()->setVariable('usuario1', $usuario1);
+        }
+
         return new ViewModel(array('usuario1' => $usuario1));
-        
         
     }
     
